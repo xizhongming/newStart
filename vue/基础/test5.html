@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <transition tag="div">
+        <span :key="text">{{text}}</span>
+    </transition>
+
+    <p ref="p">hello</p>
+
+    <!--<child-comp ref="child"></child-comp>-->
+
+    <comp tag="div">
+        <span slot="username">张三</span>
+        <span slot="age"> 20 </span>
+    </comp>
+
+    <comp tag="div">
+        <span slot="username">李四</span>
+    </comp>
+
+    <!--<div class="child">-->
+        <!--<slot text="hello from child"></slot>-->
+    <!--</div>-->
+
+    <!--<comp1>-->
+        <!--<template>-->
+            <!--<div class="child">-->
+                <!--<h3>这里是子组件</h3>-->
+                <!--<slot></slot>-->
+            <!--</div>-->
+        <!--</template>-->
+    <!--</comp1>-->
+</div>
+<template id="temp">
+    <div>
+        <p>
+            <!--具名插槽-->
+            用户名: <slot name="username">默认姓名</slot>
+        </p>
+        <p>
+            年龄:  <slot name="age">默认年龄</slot>
+        </p>
+    </div>
+</template>
+
+<!--<div class="parent">-->
+    <!--<child>-->
+        <!--<template slot-scope="props">-->
+            <!--<span> hello from parent</span>-->
+            <!--<span>{{props.text}}</span>-->
+        <!--</template>-->
+    <!--</child>-->
+<!--</div>-->
+
+<!--单个插槽|默认插槽|匿名插槽-->
+<!--父组件-->
+<template>
+    <div class="father">
+        <h3>这里是父组件</h3>
+        <child>
+            <div class="tem1">
+                <span>菜单1</span>
+                <span>菜单2</span>
+                <span>菜单3</span>
+                <span>菜单4</span>
+                <span>菜单5</span>
+                <span>菜单6</span>
+            </div>
+        </child>
+    </div>
+</template>
+<!--子组件-->
+<template>
+    <div class="child">
+        <h3>这里是子组件</h3>
+        <slot></slot>
+    </div>
+</template>
+
+<!--具名插槽-->
+<template>
+    <div class="father">
+        <h3>这里是父组件</h3>
+        <child>
+            <div class="tem1" slot="up">
+                <span>菜单1</span>
+                <span>菜单2</span>
+                <span>菜单3</span>
+                <span>菜单4</span>
+                <span>菜单5</span>
+                <span>菜单6</span>
+            </div>
+            <div class="tem1" slot="down">
+                <span>菜单-1</span>
+                <span>菜单-2</span>
+                <span>菜单-3</span>
+                <span>菜单-4</span>
+                <span>菜单-5</span>
+                <span>菜单-6</span>
+            </div>
+            <div class="tem1">
+                <span>菜单->1</span>
+                <span>菜单->2</span>
+                <span>菜单->3</span>
+                <span>菜单->4</span>
+                <span>菜单->5</span>
+                <span>菜单->6</span>
+            </div>
+        </child>
+    </div>
+</template>
+
+<template>
+    <div class="child">
+        <!--具名插槽-->
+        <slot name="up"></slot>
+        <h3>这里是子组件</h3>
+        <!--具名插槽-->
+        <slot name="down"></slot>
+        <!--匿名插槽-->
+        <slot></slot>
+    </div>
+</template>
+
+
+<!--作用域插槽|带数据的插槽-->
+<slot name="up" :data="data"></slot>
+<!--export default{-->
+    <!--data:function{-->
+        <!--return {-->
+            <!--data:['张三','lisi','wanwu','zhaoliu','tianqi','xiaobao']-->
+        <!--}-->
+    <!--}-->
+<!--}-->
+<script src="../vue.js"></script>
+<script>
+    let app =new Vue({
+        el:'#app',
+        data:{
+            text:'hello',
+        },
+        components:{
+            comp:{
+                template:'#temp',
+            },
+            comp1:{
+
+            }
+        }
+    });
+    console.log(app.$refs.p);
+    let arr = ['a','b','c','d','e'];
+//    arr.splice(2,0,'d');
+//    arr.splice(2,1,'d');
+//    arr.splice(2,2,'e');
+//    arr.splice(2,1);
+//    arr.splice(2);
+//    console.log(arr);
+//    let newArr = arr.forEach((value,key)=>{
+//        if(value == 'c'){
+//            console.log(value,key);
+//            return value;
+//        }
+//        console.log(value,key);
+//    });
+//    console.log(newArr);
+
+</script>
+</body>
+</html>
