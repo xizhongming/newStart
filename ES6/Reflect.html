@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//   1 <!--Reflect.get(target,name,receiver)-->
+//    let myObject = {
+//        foo:1,
+//        bar:2,
+//        get baz(){
+//            return this.foo + this.bar;
+//        }
+//    };
+//    Reflect.get(myObject,'foo');//1
+//    console.log(Reflect.get(myObject,'foo'));
+//    Reflect.get(myObject,'bar');//2
+//    console.log(Reflect.get(myObject,'bar'));
+//    Reflect.get(myObject,'baz');//3
+//    console.log(Reflect.get(myObject,'baz'));
+//
+//    let myReceiverObject = {
+//        foo:4,
+//        bar:4,
+//    };
+//    如果name属性部署了读取函数（getter），则读取函数的this绑定receiver。
+//    如果第一个参数不是对象，Reflect.get方法会报错。
+//    console.log(Reflect.get(myObject,'baz',myReceiverObject));//8
+
+//    console.log(Reflect.get(1,'foo'));//报错
+//    console.log(Reflect.get(false,'foo'));//报错
+
+//       2 <!-- Refelct.set(target,name,value,receiver)方法-->
+//    let myObject = {
+//            foo:1,
+//            set bar(value){
+//                return this.foo = value;
+//            },
+//    };
+//    console.log(myObject.foo);//1
+//
+//    Reflect.set(myObject,'foo',2);
+//    console.log(myObject.foo);//2
+//
+//    Reflect.set(myObject,'bar',3);
+//    console.log(myObject.foo);//3
+
+//如果name属性设置了赋值函数，则赋值函数的this绑定receiver。
+//    let myObject1 = {
+//        foo:4,
+//        set bar(value){
+//            return this.foo = value;
+//        },
+//    };
+//    let myReceiverObject = {
+//        foo:0,
+//    };
+//    Reflect.set(myObject1,'bar',1,myReceiverObject);
+//    console.log(myObject1.foo);//4
+//    console.log(myReceiverObject.foo);//1
+
+//注意，如果 Proxy 对象和 Reflect 对象联合使用，前者拦截赋值操作，后者完成赋值的默认行为，而且传入了receiver，那么Reflect.set会触发Proxy.defineProperty拦截。
+
+//    let p = {
+//        a:'a'
+//    };
+//    let handler = {
+//        set(target,key,value,receiver){
+//            console.log('set');
+//            Reflect.set(target,key,value,receiver);
+//        },
+//        defineProperty(target,key,value,attribute){
+//            console.log('defineProperty');
+//            Reflect.defineProperty(target,key,value,attribute);
+//        }
+//    };
+//    let obj = new Proxy(p,handler);
+//    obj.a = 'A';
+    //set
+    //defineProperty
+
+//   3 Reflect.has(obj,name)方法 对应 name in obj 里面的in 运算符
+
+//    let myObject = {
+//            foo:1,
+//    };
+//    console.log('foo' in myObject);//true 旧写法
+//    console.log(Reflect.has(myObject,'foo'))//true,新写法
+
+//   4 Reflect.deleteProperty(obj,name)方法等同于delete obj[name] 删除对象属性
+
+//    const myObj = {
+//            foo:'bar',
+//            fn:'bar',
+//    };//旧写法
+//    console.log(delete myObj.foo);
+//    console.log(myObj);
+//    console.log(Reflect.deleteProperty(myObj,'foo'));//新写法 ??有问题
+
+//   5 Reflect.construct(target,args)方法 等同于 new target(...args)
+//    function Greeting(name){
+//            this.name = name;
+//    }
+//        const instance = new Greeting('张三');//旧写法
+//        const instance1 = Reflect.construct(Greeting,['张三']);//Reflect.construct的写法
+//    console.log(instance.name);
+//    console.log(instance1.name);
+
+//  6  Reflect.getPrototypeOf(obj)方法 用于读取对象的_proto_属性 对应Object.getPrototypeOf(obj) //如果参数不是对象Reflect.getprototypeOf会报错 Object.getprototypeOf会将参数转为对象然后在运行
+//    function FancyThing(){
+//
+//    }
+//    const myObj = new FancyThing();
+//    console.log(Object.getPrototypeOf(myObj) === FancyThing.prototype);//旧写法
+//    console.log(Reflect.getPrototypeOf(myObj) === FancyThing.prototype);//新写法
+
+//    7 Reflect.setPrototypeOf(obj, newProto)方法 用于设置_proto属性 返回第一个参数对象 对应Object.setPrototype(obj,newProto) //如果第一个参数不是对象 Object.setprototypeOf会返回第一个参数本身 而Reflect.setprototypeOf会报错//如果第一个参数是undefined或null 都会报错
+//    function OtherThing(){
+//
+//    }
+//    const other = new OtherThing();
+//    const myObj = new FancyThing();
+//    console.log(myObj.prototype,other.prototype);//undefined
+//    console.log(OtherThing.prototype,FancyThing.prototype);
+//    console.log(FancyThing.prototype === OtherThing.prototype);//false
+//    console.log(Object.setPrototypeOf(myObj,OtherThing.prototype));//旧写法??有问题
+//    console.log(Reflect.setPrototypeOf(myObj,OtherThing.prototype));//新写法
+//    console.log(Object.setPrototypeOf(myObj,other.prototype));//旧写法
+//    console.log(Reflect.setPrototypeOf(myObj,other.prototype));//新写法
+
+
+//    8 Reflect.apply(func,thisArg,args)方法 等同于 Function.prototype.apply.call(func,thisArg,args),用于绑定this对象后执行给定函数
+
+//    const ages = [11,22,33,44,55,66];
+//    const youngest = Math.min.apply(Math,ages);//旧写法
+//    const oldest = Math.max.apply(Math,ages);
+//    const type = Object.prototype.toString.call(youngest);
+//    console.log(youngest,oldest,type);
+//
+//    const youngest1 = Reflect.apply(Math.min,Math,ages);//旧写法
+//    const oldest1 = Reflect.apply(Math.max,Math,ages);
+//    const type1 = Reflect.apply(Object.prototype.toString,youngest1,[]);
+//    console.log(youngest1,oldest1,type1);
+
+//    9 Reflect.defineProperty(target,propertyKey,attributes)等同于Object.defineProperty; 如果第一个参数不是对象 就会抛出错误 可以与Proxy.defineProperty配合使用
+//    function MyDate(){
+//
+//    }
+//    Object.defineProperty(MyDate,'now',{
+//        value:()=>Date.now()
+//    });
+//    console.log(MyDate.now,MyDate.now());
+//    Reflect.defineProperty(MyDate,'now',{
+//        value:()=>Date.now()
+//    });
+//    console.log(MyDate.now,MyDate.now());
+//
+//    const p = new Proxy({},{
+//        defineProperty(target,prop,descriptor){
+//            console.log(descriptor);
+//            return Reflect.defineProperty(target,prop,descriptor);
+//        }
+//    });
+//    p.foo = 'bar';
+//{value:"bar",writable:true,enumerable:true,configurable:true}
+//    console.log(p.foo);//"bar"
+
+//    10 Reflect.getOwnPropertyDescriptor(target,propertyKey)方法 等同于Object.getOwnPropertyDescriptor 如果第一个对象不是对象 Object.getOwnPropertyDescriptor返回undefined,而 Reflect.getOwnPropertyDescriptor()
+
+//    let myObject = {};
+//    Object.defineProperty(myObject,'hidden',{value:true,enumerable:false});
+//    let theDescriptor = Object.getOwnPropertyDescriptor(myObject,'hidden');//旧写法
+//    let theDescriptor1 = Reflect.getOwnPropertyDescriptor(myObject,'hidden');//新写法
+//console.log(theDescriptor,theDescriptor1);
+
+//    11 Reflect.isExtensible(target) 方法对应 Object.isExtensible(target) 返回一个布尔值 表示当前对象是否可扩展 如果参数不是对象 Object.isExtensible返回false Reflect.isExtensible 会报错
+//    const myObject = {};
+//    console.log(Object.isExtensible(myObject))//true
+//    console.log(Reflect.isExtensible(myObject))//true
+
+//    12 Reflect.preventExtensions(target) 对应 Object.preventExtensions  用于让一个对象变为不可扩展 它返回一个布尔值 表示是否操作成功 如果参数不是对象 报错
+//    let myObject = {};
+//    console.log(Object.preventExtensions(myObject));
+//    console.log(Reflect.preventExtensions(myObject));
+
+//    13 Reflect.ownKeys(target) 用于返回对象的所有属性 等同于 Object.getOwnPropertyNames 与 Object.getOwnPropertySymbols 之和
+//    let myObject = {
+//        foo:1,
+//        bar:2,
+//        [Symbol.for('baz')]:3,
+//        [Symbol.for('bing')]:4,
+//    };
+//    console.log(Object.getOwnPropertyNames(myObject));//['foo','bar']
+//    console.log(Object.getOwnPropertySymbols(myObject));//[Symbol(baz),Symbol(bing)];
+//
+//    console.log(Reflect.ownKeys(myObject));//['foo','bar',Symbol(baz),Symbol(bing)]
+
+//    使用Proxy实现观察者模式
+
+// 数据对象person 是观察目标，函数print 是观察者 一旦数据对象发生变化 print 就会自动执行 使用 Proxy 写一个观察者模式的最简单实现 即实现observable 和 observe函数  思路是observable 函数返回一个原始对象的proxy代理，拦截赋值操作，触发充当观察者的各个函数
+
+//        const person = observable({
+//            name:'张三',
+//            age:20
+//        });
+//        function print(){
+//            console.log(`${person.name},${person.age}`)
+//        }
+//        observe(print);
+//        person.name = '李四';
+//        输出
+//        李四,20
+
+    const queuedObservers = new Set();
+    const observe = fn => queuedObservers.add(fn);
+    const observable = obj => new Proxy(obj,{set});
+    function  set(target,key,value,receiver){
+        const result = Reflect.set(target,key,value,receiver);
+        queuedObservers.forEach(observer=>observer());
+        return result;
+    }
+        const person = observable({
+            name:'张三',
+                age:20
+        });
+        function print(){
+            console.log(`${person.name},${person.age}`)
+        }
+        observe(print);
+        person.name = '李四';
+//        输出
+//        李四,20
+
+</script>
+</body>
+</html>
