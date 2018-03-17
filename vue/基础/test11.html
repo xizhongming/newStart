@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="demo">
+        <h1>
+            {{firstName}} + {{lastName}} = {{fullName}}
+        </h1>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#demo',
+            data:{
+                firstName:'Foo',
+                lastName:'Bar',
+//                fullName:'Foo Bar'
+            },
+            watch:{
+//                firstName(val){
+//                    this.fullName = val + ' ' + this.lastName;
+//                },
+//                lastName(val){
+//                    this.fullName = this.firstName + ' ' + val;
+//                }
+            },
+            computed:{
+                fullName(){
+                    return this.firstName + ' ' + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

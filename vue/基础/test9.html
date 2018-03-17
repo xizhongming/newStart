@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--组件-->
+<body>
+<div id="app">
+    <template v-if="isShow">
+        <h1>hhh</h1>
+        <h1>hhh</h1>
+        <h1>hhh</h1>
+        <h1>hhh</h1>
+    </template>
+
+    <company msg="这是组件1"></company>
+    <company msg="这是组件2"></company>
+
+    <comp :content="title"></comp>
+    <div v-text="title"></div>
+
+    <net @click.native="add"></net>
+    <h1>{{num}}</h1>
+
+    <div :is="whichComponent"></div>
+</div>
+<script src="../vue.js"></script>
+<script>
+    Vue.component('company',{
+        template:`<div>
+    <h1>{{msg}}</h1>
+    <h1>这是一个全局组件</h1>
+    <h1>这是一个全局组件</h1>
+</div>`,
+        props:['msg']
+    });
+    Vue.component('web',{
+       template:'<h1>{{msg}}</h1>',
+       props:['msg'],
+    });
+    Vue.component('net',{
+        template:`<div>
+    <h1>net组件</h1>
+    <web msg="web组件"></web>
+</div>`
+    });
+    new Vue({
+        el:'#app',
+        data:{
+            isShow:true,
+            title:'这是一个局部组件',
+            num:0,
+            whichComponent:'comp1',
+        },
+        components:{
+            comp:{
+                template:'<h1>{{content}}</h1>',
+                props:['content'],
+            },
+            comp1:{
+                template:'<h1>comp1</h1>'
+            },
+            comp2:{
+                template:'<h1>comp2</h1>'
+            },
+            comp3:{
+                template:'<h1>comp3</h1>'
+            }
+        },
+        methods:{
+            add(){
+                this.num++;
+            }
+        }
+    })
+</script>
+</body>
+</html>
