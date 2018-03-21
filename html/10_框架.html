@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*frame{*/
+            /*noresize:noresize;*/
+        /*}*/
+    </style>
+</head>
+<!--<body>-->
+<!-- 框架 每份HTML称为一个框架 -->
+<!--不支持frame的浏览器可加noframes-->
+    <!--<frameset rows="50%,50%">-->
+        <!--<frame src="test1.html" noresize="noresize"/>-->
+        <!--<frameset cols="25%,75%">-->
+            <!--<frame src="test2.html"/>-->
+            <!--<frame src="test3.html"/>-->
+        <!--</frameset>-->
+
+        <!--<noframes>-->
+            <!--<body>您的浏览器无法处理框架</body>-->
+        <!--</noframes>-->
+    <!--</frameset>-->
+<!--</body>-->
+<!--<frameset cols="120,*">-->
+    <!--<frame src="test4.html"/>-->
+    <!--<frame src="test1.html" name="showframe"/>-->
+<!--</frameset>-->
+
+<!--内联框架-->
+<!--<body>-->
+<!--<iframe src="img/sunset.jpg" width="100%"  height="1000px" frameborder="0"></iframe>-->
+<!--<p>一些老的浏览器不支持 iframe。</p>-->
+<!--<p>如果得不到支持，iframe 是不可见的。</p>-->
+<!--</body>-->
+
+<!--<frameset cols="20%,80%">-->
+    <!--<frame src="test1.html"/>-->
+    <!--<frame src="test5.html#C11"/>-->
+<!--</frameset>-->
+
+<!--<frameset cols="180,*">-->
+    <!--<frame src="test6.html"/>-->
+    <!--<frame src="test5.html" name="showframe"/>-->
+<!--</frameset>-->
+
+    <body>
+    <iframe src="test5.html" frameborder="0" name="iframe_a"></iframe>
+    <p>
+        <a href="http://www.baidu.com" target="iframe_a">百度</a>
+    </p>
+    p><b>注释：</b>由于链接的目标匹配 iframe 的名称，所以链接会在 iframe 中打开。</p>
+    </body>
+</html>
