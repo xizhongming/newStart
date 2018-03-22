@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--表单元素
+    input 元素、复选框、单选按钮、提交按钮等等。
+    action
+    method GET POST
+    属性 accept-charset autocomplete enctype name novalidate target
+-->
+<form action="#">
+    First name:<br/>
+    <input type="text" name="firstname">
+    <br/>
+    Last name:<br/>
+    <input type="text" name="lastname">
+    <p>请注意表单本身是不可见的。</p>
+    <p>同时请注意文本字段的默认宽度是 20 个字符。</p>
+
+    <input type="radio" name="sex" value="male" checked>Male
+    <input type="radio" name="sex" value="female">Female
+
+    <input type="submit" name="sub">
+</form>
+
+<form action="">
+    <fieldset>
+        <legend>Personal information:</legend>
+        First name:<br/>
+        <input type="text" name="firstname">
+        <br/>
+        Last name:<br/>
+        <input type="text" name="lastname">
+        <input type="radio" name="sex" value="male" checked>Male
+        <input type="radio" name="sex" value="female">Female
+
+        <input type="submit" name="sub">
+    </fieldset>
+
+    <input type="text" list="browsers">
+    <datalist id="browsers">
+        <option value="Internet Explorer">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+    </datalist>
+</form>
+</body>
+</html>
