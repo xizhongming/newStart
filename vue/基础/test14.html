@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+       #app{
+           width: 520px;
+           height: 280px;
+           border:1px solid;
+           position:relative;
+           margin:100px auto;
+       }
+        #list{
+            list-style: none;
+            position:absolute;
+            right:10px;
+            bottom:10px;
+        }
+        #list li{
+            width: 20px;
+            height: 20px;
+            color:#fff;
+            background:#000;
+            line-height:20px;
+            text-align:center;
+            float:left;
+            margin-right:5px;
+            cursor:pointer;
+        }
+        #list .selected{
+            background:orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" @mouseover="mousein" @mouseout="mouseout">
+        <div id="content">
+            <img :src="item" v-show="index==imgIndex" alt="这是一个图片" v-for="(item,index) in imgList">
+        </div>
+        <ul id="list" >
+            <li :class="{selected:index==imgIndex}" @mouseover="imgIndex = index" v-for="(val,index) in imgList.length">{{val}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                imgList:['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'],
+                imgIndex:0,
+                timer:null,
+            },
+            mounted(){
+                this.play();
+            },
+            methods:{
+                mousein(){
+                    clearInterval(this.timer);
+                },
+                mouseout(){
+                    this.play();
+                },
+                play(){
+                    this.timer = setInterval(()=>{
+                        this.imgIndex++;
+                        if(this.imgIndex == this.imgList.length){
+                            this.imgIndex = 0;
+                        }
+                    },1000);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
