@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="alert('Welcome!')" value="点击这里">点击这里</button>
+
+<p id="demo">Hello World</p>
+
+<div id="div1">
+    <p id="demo1">This is a paragraph</p>
+</div>
+<script>
+    //写入HTML输出
+    document.write('<h1>Hello World</h1>');
+    //对事件做出反应
+    //改变HTML内容
+    document.getElementById('demo').innerHTML = "Hello JavaScript";
+    var oDiv = document.createElement('div');
+    oDiv.innerHTML = 'This is a div';
+    document.body.appendChild(oDiv);
+    var oP = document.getElementById('demo1');
+//    document.body.removeChild(oP);
+    var oDiv1 = document.getElementById('div1');
+//    console.log(document.body.removeChild(oP))
+    oDiv1.removeChild(oP);
+    //改变HTML图像
+    //改变HTML 样式 document.getElementById().style
+
+    //验证输入
+
+</script>
+</body>
+</html>
