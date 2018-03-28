@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let add =(function(){
+        let now = 0;
+        return {
+            doAdd:function(){
+                now++;
+                console.log(now);
+            }
+        }
+    })();
+    add.doAdd();//1
+    add.doAdd();//2
+    console.log(add);
+</script>
+</body>
+</html>
