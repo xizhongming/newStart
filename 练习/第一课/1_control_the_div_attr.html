@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+
+        }
+        .container{
+            margin:10px auto;
+            width:500px;
+            text-align:center;
+        }
+         button{
+
+             margin:0 auto;
+             margin-right:5px;
+        }
+        #block{
+            margin:0 auto;
+        }
+        #block{
+            width: 100px;
+            height: 100px;
+            background-color:#000;
+            margin-top:10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="btn_list">-->
+            <button type="button" value="变宽" id="change_width">变宽</button>
+            <button type="button" value="变高" id="change_height">变高</button>
+            <button type="button" value="变色" id="change_color">变色</button>
+            <button type="button" value="隐藏" id="change_show">隐藏</button>
+            <button type="button" value="重置" id="reset">重置</button>
+        <!--</div>-->
+        <div id="block">
+
+        </div>
+    </div>
+    <script>
+
+//        let oBtn1 = document.getElementById('change_width');
+//        let oBtn2 = document.getElementById('change_height');
+//        let oBtn3 = document.getElementById('change_color');
+//        let oBtn4 = document.getElementById('change_show');
+//        let oBtn5 = document.getElementById('reset');
+//        let oBlock = document.getElementById('block');
+////        console.log(oBlock);
+////        console.log(oBtn5);
+//        oBtn1.onclick = function(){
+//            oBlock.style.width = '200px';
+//        };
+//        oBtn2.onclick = function(){
+//            oBlock.style.height = '200px';
+//        };
+//        oBtn3.onclick = function(){
+//            console.log(1234);
+//            oBlock.style.backgroundColor = '#ff0000';
+//        };
+//        oBtn4.onclick = function(){
+//            oBlock.style.display = 'none';
+//        };
+//        oBtn5.onclick = function(){
+//            oBlock.style.width = '100px';
+//            oBlock.style.height = '100px';
+//            oBlock.style.backgroundColor = '#000';
+//            oBlock.style.display = 'block';
+////            oBlock.style. = '200px';
+//        };
+
+
+
+        window.onload = function(){
+            let oBtn = document.getElementsByTagName('button');
+            let oAttr = ['width','height','backgroundColor','display','display'];
+            let oVal = ['200px','200px','#ff0000','none','block'];
+            let oDiv1 = document.getElementById('block');
+            for(let i = 0; i < oBtn.length; i++){
+                oBtn[i].index = i;
+                oBtn[i].onclick = function(){
+                    this.index == oBtn.length -1 && (oDiv1.style.cssText = "");
+                    changeStyle(oDiv1, oAttr[this.index], oVal[this.index]);
+                }
+            }
+            function changeStyle(elem , attr, val){
+                elem.style[attr] = val;
+            }
+        }
+
+    </script>
+</body>
+</html>
