@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            margin:0 auto;
+            width:500px;
+            text-align:center;
+        }
+        input{
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <input type="text" value="北京市" id="first">
+    <br/>
+    <input type="text" value="朝阳区" id="second">
+    <br/>
+    <input type="submit" id="btn" value="传参" onclick="myFunction(document.getElementById('first').value,document.getElementById('second').value)">
+</div>
+<script>
+    function myFunction(val1, val2){
+        console.log(123);
+//        console.log(123);
+       alert(val1);
+       alert(val2);
+    }
+     let  oBtn = document.getElementById('btn');
+//    oBtn.onclick = function(){
+//        alert(document.getElementById('first').value);
+//        alert(document.getElementById('second').value);
+//        console.log(1234);
+//    }
+//    window.onload = function(){
+//
+//    }
+</script>
+</body>
+</html>

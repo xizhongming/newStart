@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            margin:0 auto;
+            width:500px;
+            text-align:center;
+        }
+        button{
+            margin:5px auto;
+        }
+        .clear{
+            content:'';
+            clear:both;
+        }
+        .outer{
+            margin:0 auto;
+            width:330px;
+        }
+
+        .div{
+            float:left;
+            width: 100px;
+            height: 100px;
+            /*margin:0 auto;*/
+            margin-right:10px;
+            background-color: #000;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <button type="button" id="btn">点击将DIV变成红色</button>
+    <div class="clear"></div>
+    <div class="outer">
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+    </div>
+</div>
+<script>
+    window.onload = function(){
+        let oBtn = document.getElementById('btn');
+        let oDiv = document.getElementsByClassName('outer')[0].getElementsByTagName('div');
+        oBtn.onclick = function(){
+            for(let i = 0; i < oDiv.length; i++){
+                oDiv[i].style.backgroundColor = '#ff0000';
+            }
+        }
+    }
+</script>
+</body>
+</html>
