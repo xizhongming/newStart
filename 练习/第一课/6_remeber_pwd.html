@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            margin:0 auto;
+            width:200px;
+            /*height:13px;*/
+            font-size:13px;
+            text-align: center;
+        }
+        .container:hover{
+            cursor:default;
+        }
+        #btn{
+            margin:10px auto;
+            line-height: 13px;
+            margin-right:5px;
+            /*display:inline-block;*/
+            /*display:block;*/
+        }
+        #tip{
+            width:200px;
+            background:orange;
+            border:1px solid #ff0000;
+            display:none;
+            position:absolute;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <input type="checkbox" id="btn">两周内自动登录
+</div>
+<div id="tip">为了您的信息安全,请不要再网吧或公用电脑上使用此功能!</div>
+<script>
+    let oDiv = document.getElementsByClassName('container');
+    let oBtn = document.getElementById('btn');
+    let oTip = document.getElementById('tip');
+    oDiv[0].onmouseover = function(){
+        oTip.style.display = 'block';
+        oTip.style.top = oBtn.offsetTop + 20 + 'px';
+        oTip.style.left = oBtn.offsetLeft + 'px';
+//        oTip.style = {
+//            top:oBtn.offsetTop + 20 + 'px',
+//            left:oBtn.offsetLeft + 'px',
+//        }
+    };
+    oDiv[0].onmouseout = function(){
+        oTip.style.display = 'none';
+    }
+</script>
+</body>
+</html>
