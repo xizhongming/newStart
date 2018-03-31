@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn{
+            margin:10px auto;
+            display:block;
+            /*width:100px;*/
+        }
+        #btn:hover{
+            cursor:pointer;
+        }
+        #choose{
+            list-style: none;
+            border:1px solid #0000ff;
+            display:none;
+            width:80px;
+            position:absolute;
+            padding:0;
+        }
+        #choose li{
+            padding:5px;
+            /*margin:5px;*/
+            color:#0000ff;
+            /*width:100%;*/
+            /*text-align: left;*/
+        }
+
+        #choose li:hover{
+            background:#2b669a;
+            cursor:pointer;
+        }
+        #close{
+            border-top:1px solid #0000ff;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">百度输入法</button>
+    <ul id="choose">
+        <li>手写</li>
+        <li>拼音</li>
+        <li id="close">关闭</li>
+    </ul>
+    <script>
+        let oBtn = document.getElementById('btn');
+        let oUl = document.getElementById('choose');
+        let oLi = document.getElementById('close');
+        oBtn.onclick = function(){
+            console.log(oUl.style.display);
+
+            if(oUl.style.display == ''){
+                oUl.style.display = 'block';
+            }else if(oUl.style.display == 'block'){
+                oUl.style.display = 'none';
+            }else{
+                oUl.style.display = 'block';
+            }
+            console.log(oUl.style.display);
+            oUl.style.top = oBtn.offsetTop + 30 + 'px';
+            oUl.style.left = oBtn.offsetLeft + 'px';
+        };
+        oLi.onclick = function(){
+          oUl.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
