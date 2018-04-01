@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+            .outer{
+                margin:0 auto;
+                width:600px;
+                /*overflow:hidden;*/
+            }
+            #sum{
+                margin:0 10px 10px 0;
+                width:220px;
+            }
+            span{
+                color:#ccc;
+            }
+            h1{
+                color:#ff0000;
+                display:none;
+            }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <input type="text" id="sum" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15">
+    <span>输入数字求和,数字之间用半角","号分隔</span>
+    <br/>
+    <button type="button" id="btn">求和</button>
+    <br/>
+    <h1 id="tip"></h1>
+</div>
+<script>
+    let oBtn = document.getElementById('btn');
+    let oSum = document.getElementById('sum');
+    let oTip = document.getElementById('tip');
+    oBtn.onclick = function(){
+        let arr = oSum.value.toString().split(',');
+        let total = 0;
+        for(let i = 0; i < arr.length; i++){
+            total += parseInt(arr[i]);
+        }
+        oTip.style.display = 'block';
+        oTip.innerHTML = total;
+    }
+</script>
+</body>
+</html>

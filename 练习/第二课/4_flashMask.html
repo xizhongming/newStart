@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin:0;
+            /*position:relative;*/
+        }
+        #btn{
+            margin:10px auto;
+            display:block;
+        }
+        #btn:hover{
+            cursor:pointer;
+        }
+        #mask{
+            position:absolute;
+            background:#1b6d85;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            display:none;
+            opacity: 0.5;
+        }
+        #title{
+            display:none;
+            width:500px;
+            height:250px;
+            border:5px solid #ffA500;
+            /*margin:0 auto;*/
+            top:50%;
+            left:50%;
+            position:absolute;
+            transform:translate(-50%,-50%);
+            background:#fff;
+        }
+        #item{
+            height:30px;
+            line-height: 30px;
+            border-bottom:5px solid #ffA500;
+            background:#ffA;
+
+        }
+        #close:hover{
+            cursor:pointer;
+        }
+        #item span{
+            float:right;
+            border:1px solid #ffA500;
+            width:10px;
+            height:10px;
+            text-align: center;
+            line-height: 5px;
+            margin:10px 5px;
+            background:#fff;
+            color:#ffA500;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="btn">弹出层</button>
+    <div id="mask"></div>
+    <div id="title">
+        <div id="item"><span id="close">x</span></div>
+        <div id="content"></div>
+    </div>
+    <script>
+        let oBtn = document.getElementById('btn');
+        let oMask = document.getElementById('mask');
+        let oTitle = document.getElementById('title');
+        oBtn.onclick = function(){
+            oMask.style.display = 'block';
+            oTitle.style.display = 'block';
+        };
+        let oClose = document.getElementById('close');
+        oClose.onclick = function(){
+            oMask.style.display = 'none';
+            oTitle.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
