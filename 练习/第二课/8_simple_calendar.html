@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        .outer{
+            margin:0 auto;
+            background:#ccc;
+            padding:5px;
+            width:370px;
+        }
+        ul li{
+            float:left;
+            margin:5px;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            background:#000;
+            color:#fff;
+            border:1px solid #000;
+        }
+        ul li:hover{
+         cursor:pointer;
+        }
+        #selected{
+            background:#fff;
+            color:#ff1493;
+        }
+        .clear{
+            content:'';
+            clear:both;
+        }
+        #content{
+            border:1px solid #fff;
+            padding:5px;
+            margin:5px;
+            background:#f7f7f7;
+        }
+        #content div{
+            display:none;
+        }
+        #content .selected{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul>
+            <li class="month">
+                <p>1</p>
+                <p>JAN</p>
+            </li>
+            <li class="month">
+                <p>2</p>
+                <p>FER</p>
+            </li>
+            <li class="month">
+                <p>3</p>
+                <p>MAR</p>
+            </li>
+            <li class="month">
+                <p>4</p>
+                <p>APR</p>
+            </li>
+        </ul>
+        <ul>
+            <li class="month">
+                <p>5</p>
+                <p>MAY</p>
+            </li>
+            <li class="month" id="selected">
+                <p>6</p>
+                <p>JUN</p>
+            </li>
+            <li class="month">
+                <p>7</p>
+                <p>JUL</p>
+            </li>
+            <li class="month">
+                <p>8</p>
+                <p>AUG</p>
+            </li>
+        </ul>
+        <ul>
+            <li class="month">
+                <p>9</p>
+                <p>SEP</p>
+            </li>
+            <li class="month">
+                <p>10</p>
+                <p>OCT</p>
+            </li>
+            <li class="month">
+                <p>11</p>
+                <p>NOV</p>
+            </li>
+            <li class="month">
+                <p>12</p>
+                <p>DEC</p>
+            </li>
+        </ul>
+        <div class="clear"></div>
+        <div id="content">
+            <div>
+            <h3>1月节日</h3>
+            <span>元旦:1月1日至3日放假三天.</span></div>
+            <div>
+            <h3>2月节日</h3>
+            <span>春节:2月2日至8日放假7天</span></div>
+            <div>
+            <h3>3月节日</h3>
+            <span>妇女节:3月8日妇女节,与我无关</span></div>
+            <div>
+            <h3>4月节日</h3>
+            <span>清明节:4月3日至5日放假3天</span></div>
+            <div>
+            <h3>5月节日</h3>
+            <span>劳动节:4月30日至5月2日放假2天</span></div>
+            <div class="selected">
+            <h3>6月节日</h3>
+            <span>端午节:6月4日至6日放假3天</span></div>
+            <div>
+            <h3>7月节日</h3>
+            <span>小暑:7月7日小暑,不放假</span></div>
+            <div>
+            <h3>8月节日</h3>
+            <span>七夕节:8月6日七夕节.不放假</span></div>
+            <div>
+            <h3>9月节日</h3>
+            <span>中秋节:9月10日至12日放假3天</span></div>
+            <div>
+            <h3>10月节日</h3>
+            <span>国庆节:10月1日至7日放假7天</span></div>
+            <div>
+            <h3>11月节日</h3>
+            <span>立冬:11月8日立冬.不放假</span></div>
+            <div>
+            <h3>12月节日</h3>
+            <span>艾滋病日:12月1日</span>
+            <br/>
+            <span>废除奴隶制国际日:12月2日</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let oLi = document.getElementsByClassName('month');
+        let oDiv = document.getElementById('content').getElementsByTagName('div');
+        for(let i = 0; i < oLi.length; i++){
+            oLi[i].index = i;
+            oLi[i].onmouseover = function(){
+                for(let j = 0; j < oLi.length; j++){
+                    oLi[j].removeAttribute('id');
+                    oDiv[j].removeAttribute('class');
+                }
+                oLi[this.index].setAttribute('id','selected');
+                oDiv[this.index].setAttribute('class','selected');
+            };
+
+        }
+    </script>
+</body>
+</html>
