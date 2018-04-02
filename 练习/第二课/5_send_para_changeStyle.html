@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outer{
+            font-size:12px;
+            margin:0 auto;
+            width:300px;
+            overflow:hidden;
+        }
+        input,button{
+            /*display:block;*/
+            margin:0 auto;
+            margin-bottom:5px;
+        }
+        button{
+            margin-right:5px;
+        }
+        #div{
+            font-size:12px;
+            width:180px;
+            height: 200px;
+            padding:5px;
+            background:#000;
+            color:#fff;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="outer">
+    <p>
+        属性名: <input type="text" value="background" id="attr">
+    </p>
+    <!--<br/>-->
+    <p>
+        属性值: <input type="text" value="blue" id="val">
+    </p>
+    <!--<br/>-->
+    <p>
+        <button id="btn1" type="button">确定</button>
+        <button id="btn2" type="button">重置</button>
+    </p>
+</div>
+<div id="div">在上方输入框输入"属性名"及"属性值",点击确定按钮查看效果</div>
+<script>
+    let oBtn1 = document.getElementById('btn1');
+    let oBtn2 = document.getElementById('btn2');
+    let oDiv = document.getElementById('div');
+    oBtn1.onclick = function(){
+        let attr = document.getElementById('attr').value;
+        let val = document.getElementById('val').value;
+        oDiv.style[attr] = val;
+    };
+    oBtn2.onclick = function(){
+      oDiv.style.cssText = '';
+    };
+</script>
+</body>
+</html>
