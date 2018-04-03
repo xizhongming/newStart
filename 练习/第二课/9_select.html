@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #outer{
+            margin:0 auto;
+            width:200px;
+            border:1px solid #9d9d9d;
+        }
+        #outer:hover{
+            cursor:pointer;
+        }
+        #button{
+            border:1px solid #fff;
+            background:#cccccc;
+            padding:5px;
+            text-align:center;
+            height:30px;
+            line-height:30px;
+            color:#0f0f0f;
+        }
+        #button span{
+            float:left;
+        }
+        img{
+            float:right;
+        }
+        ul{
+            /*display:none;*/
+            list-style: none;
+            /*width:110px;*/
+            /*padding:5px;*/
+            background:#9d9d9d;
+        }
+        a{
+            text-decoration: none;
+            color:#080808;
+        }
+        li{
+            padding:5px;
+            /*margin-bottom:5px;*/
+            /*margin:5px;*/
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        li:hover{
+            background:#fff;
+        }
+        .show{
+            display:block;
+        }
+        .noshow{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="button">
+            <span>播放列表...</span>
+            <!--<img src="" alt="图标">-->
+        </div>
+        <ul id="ul" class="noshow">
+            <li><a href="">玩家之徒 - 蔡依林</a></li>
+            <li><a href="">原谅我就是这样的女生 - 戴佩妮</a></li>
+            <li><a href="">猜不透 - 丁当</a></li>
+            <li><a href="">自导自演 - 周杰伦</a></li>
+            <li><a href="">浪漫窝 - 弦子</a></li>
+            <li><a href="">流年 - 王菲</a></li>
+        </ul>
+    </div>
+    <script>
+        let oBtn = document.getElementById('button');
+        let oUl = document.getElementById('ul');
+        oBtn.onclick = function(){
+            console.log(oUl);
+            if(oUl.getAttribute('class') == 'noshow'){
+                oUl.removeAttribute('class');
+                oUl.setAttribute('class','show');
+            }else{
+                oUl.removeAttribute('class');
+                oUl.setAttribute('class','noshow');
+            }
+        }
+    </script>
+</body>
+</html>
