@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outer{
+            margin:0 auto;
+            width:150px;
+            border:1px solid #000;
+            border-radius: 2%;
+            padding:5px;
+        }
+        #check{
+            margin:5px;
+            height:30px;
+            border-bottom:1px solid #000;
+        }
+        #check span,#check button{
+            font-size:12px;
+        }
+        #btn{
+            color:#6495ed;
+            margin-left:5px;
+
+        }
+        #check input+span{
+            color:#000;
+        }
+        #btn:hover{
+            cursor:pointer;
+            color:#ff0000;
+        }
+        ul{
+            list-style: none;
+            padding:0;
+        }
+        ul li{
+            margin:5px;
+        }
+        ul li span{
+            font-size:12px;
+            margin-left:5px;
+        }
+        #tip{
+            position:absolute;
+            left:50%;
+            transform: translateX(-50%);
+            margin-top:20px;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="check">
+            <input type="checkbox" id="btn1">
+            <span id="all">全选</span>
+            <span id="btn">反选</span>
+        </div>
+        <ul id="ul">
+            <li><input type="checkbox"><span>选项(一)</span></li>
+            <li><input type="checkbox"><span>选项(二)</span></li>
+            <li><input type="checkbox"><span>选项(三)</span></li>
+            <li><input type="checkbox"><span>选项(四)</span></li>
+            <li><input type="checkbox"><span>选项(五)</span></li>
+            <li><input type="checkbox"><span>选项(六)</span></li>
+            <li><input type="checkbox"><span>选项(七)</span></li>
+            <li><input type="checkbox"><span>选项(八)</span></li>
+            <li><input type="checkbox"><span>选项(九)</span></li>
+            <li><input type="checkbox"><span>选项(十)</span></li>
+        </ul>
+    </div>
+    <div id="tip">1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</div>
+    <script>
+        let oBtn1 = document.getElementById('btn1');
+        let oBtn = document.getElementById('btn');
+        let oUl = document.getElementById('ul');
+        let oCheck = oUl.getElementsByTagName('input');
+        let oAll = document.getElementById('all');
+        oBtn1.onclick = function(){
+            if(oBtn1.checked == false){
+//                console.log(oBtn1.checked);
+               oBtn1.checked = false;
+                for(let i = 0; i < oCheck.length; i++){
+                    oCheck[i].checked = false;
+                    oAll.innerHTML = '全选';
+                }
+            }else{
+//                console.log(oBtn1.getAttribute('checked'));
+//                console.log(1);
+                oBtn1.checked = true;
+                for(let i = 0; i < oCheck.length; i++){
+                    oCheck[i].checked = true;
+                    oAll.innerHTML = '全不选';
+                }
+            }
+        };
+        oBtn.onclick = function(){
+            console.log(this);
+          for(let i = 0; i < oCheck.length; i++){
+              console.log(oCheck[i].checked);
+              console.log(!oCheck[i].checked);
+//              oCheck[i].checeked = !oCheck[i].checked;
+              if(oCheck[i].checked == true){
+                  oCheck[i].checked = false;
+              }else{
+                  oCheck[i].checked = true;
+              }
+          }
+
+            let flag = 0;
+            for(let j = 0; j < oCheck.length; j++){
+                if(oCheck[j].checked == true){
+                    flag++;
+                }
+            }
+            if(flag == oCheck.length){
+                oAll.innerHTML = '全不选';
+                oBtn1.checked = true;
+            }
+            if(flag == 0){
+                oAll.innerHTML = '全选';
+                oBtn1.checked = false;
+            }
+            flag =0;
+        };
+
+        for(let i = 0; i < oCheck.length; i++){
+            oCheck[i].onclick = function(){
+                let flag = 0;
+
+                oCheck[i].index = i;
+                console.log(this.checked,oCheck[i].index,flag);
+                for(let j = 0; j < oCheck.length; j++){
+                    if(oCheck[j].checked == true){
+                        flag++;
+                    }
+                }
+                if(flag == oCheck.length){
+                    oAll.innerHTML = '全不选';
+                    oBtn1.checked = true;
+                }
+                if(flag == 0){
+                    oAll.innerHTML = '全选';
+                    oBtn1.checked = false;
+                }
+                console.log(flag);
+                flag = 0;
+            }
+        }
+        function all(){
+
+        }
+    </script>
+</body>
+</html>

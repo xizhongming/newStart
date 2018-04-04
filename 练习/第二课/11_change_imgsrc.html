@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#000;
+        }
+        #outer{
+            background:#fff;
+            border-radius: 2%;
+            margin:5px auto;
+            padding:8px;
+
+            width:209px;
+            height:260px;
+        }
+        #big{
+            float:left;
+            border-radius: 2%;
+            margin:1px;
+            /*height:244px;*/
+            /*width:244px;*/
+            height:154px;
+            width:154px;
+        }
+        #big img{
+            /*width:244px;*/
+            width:154px;
+        }
+
+        ul li{
+            list-style: none;
+            border-radius: 2%;
+            margin:1px;
+            /*width:80px;*/
+            /*height:80px;*/
+            width:50px;
+            height:50px;
+        }
+
+        ul li img{
+            /*width:80px;*/
+            width:50px;
+        }
+        ul li:hover{
+            cursor:pointer;
+        }
+        #ul1 li{
+            float:right;
+
+        }
+        #ul1{
+            height:54px;
+        }
+
+        #ul2 li,#ul3 li{
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="big">
+            <img id="big_img" src="img/big_1.jpg" alt="">
+        </div>
+        <ul id="ul1">
+            <li><img src="img/small_1.jpg" alt=""></li>
+            <li><img src="img/small_2.jpg" alt=""></li>
+            <li><img src="img/small_3.jpg" alt=""></li>
+        </ul>
+        <ul id="ul2">
+            <li><img src="img/small_4.jpg" alt=""></li>
+            <li><img src="img/small_5.jpg" alt=""></li>
+            <li><img src="img/small_6.jpg" alt=""></li>
+            <li><img src="img/small_7.jpg" alt=""></li>
+        </ul>
+        <ul id="ul3">
+            <li><img src="img/small_8.jpg" alt=""></li>
+            <li><img src="img/small_9.jpg" alt=""></li>
+            <li><img src="img/small_10.jpg" alt=""></li>
+            <li><img src="img/small_11.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        let oLi = document.getElementsByTagName('li');
+        let oBigImg = document.getElementById('big_img');
+        for(let i = 0; i < oLi.length; i++){
+            oLi[i].index = i;
+            oLi[i].onmouseover = function(){
+//                console.log(this.index);
+//                console.log(oBigImg.style.src);
+//                oBigImg.style.src = '';
+//                oBigImg.style.src = 'img/big_' + (this.index + 1) + '.jpg';
+                oBigImg.setAttribute('src','img/big_'+(this.index+1)+'.jpg');
+            }
+        }
+    </script>
+</body>
+</html>
