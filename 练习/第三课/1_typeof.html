@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outer{
+            display:none;
+            border:1px dotted #000;
+            background:#ccc;
+            margin:0 auto;
+            height:100px;
+        }
+        pre{
+            padding:10px;
+            color:#5cb85c;
+            margin:0;
+        }
+        pre span{
+            color:#9d9d9d;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <pre>
+    &lt;script type="text/javascript"&gt;
+            alert(typeof 12345);	<span>//输出number</span>
+            alert(typeof "abc");	<span>//输出string</span>
+            alert(typeof document); <span>//输出object</span>
+    &lt;/script&gt;
+        </pre>
+    </div>
+<script>
+    let oDiv = document.getElementById('outer');
+    let str1 = 'typeof 12345 -> number';
+    let str2 = 'typeof "abc" -> string';
+    let str3 = 'typeof document -> object';
+    alert(` ${str1} \n\n ${str2} \n\n ${str3}`);
+    oDiv.style.display = 'block';
+</script>
+<!--<script type="text/javascript">-->
+    <!--alert(typeof 12345);	//输出number-->
+    <!--alert(typeof "abc");	//输出string-->
+    <!--alert(typeof document);	//输出object-->
+<!--</script>-->
+</body>
+</html>

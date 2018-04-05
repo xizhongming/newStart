@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outer{
+            margin:0 auto;
+            width:250px;
+            text-align: center;
+        }
+        input{
+            width:50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <input type="text" id="ipt1">
+        <span>+</span>
+        <input type="text" id="ipt2">
+        <span>=</span>
+        <span id="sum">?</span>
+        <button type="button" id="btn">求和</button>
+    </div>
+    <script>
+        let oIpt1 = document.getElementById('ipt1');
+        let oIpt2 = document.getElementById('ipt2');
+        let oBtn = document.getElementById('btn');
+        let oSum = document.getElementById('sum');
+        oBtn.onclick = function(){
+            parseInt(oIpt1.value);
+            parseInt(oIpt2.innerHTML);
+            console.log(oIpt1);
+            console.log(oIpt1.value);
+            console.log(parseInt(oIpt1.value));
+            console.log(typeof oIpt1.value);
+            if(oIpt1.value && oIpt2.value){
+                oSum.innerHTML = parseInt(oIpt1.value)+parseInt(oIpt2.value);
+            }else{
+                alert('请输入数字');
+            }
+        };
+        oIpt1.onkeyup = function(){
+            if(oIpt1.value.charAt(oIpt1.value.length - 1).search(/[0-9]/)){
+                oIpt1.value = oIpt1.value.slice(0,-1);
+            }
+        };
+
+        oIpt2.onkeyup = function(){
+            if(oIpt2.value.charAt(oIpt2.value.length - 1).search(/[0-9]/)){
+                oIpt2.value = oIpt2.value.slice(0,-1);
+            }
+        }
+    </script>
+</body>
+</html>
