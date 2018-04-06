@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn{
+            display:block;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">0</button>
+    <script>
+        let oBtn = document.getElementById('btn');
+        oBtn.onclick = function(){
+            oBtn.innerHTML = parseInt(oBtn.innerHTML) + 1;
+            alert(oBtn.innerHTML);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #outer{
+            margin:0 auto;
+            width:400px;
+            text-align:center;
+        }
+        input{
+            width:80px;
+        }
+        #show{
+            color:#ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <input type="text" id="ipt1">
+        <span>vs</span>
+        <input type="text" id="ipt2">
+        <button id="btn">最大的数是>></button>
+        <span id="show"></span>
+    </div>
+    <script>
+        let oBtn = document.getElementById('btn');
+        let oIpt1 = document.getElementById('ipt1');
+        let oIpt2 = document.getElementById('ipt2');
+        let oShow = document.getElementById('show');
+        oBtn.onclick = function(){
+            if(oIpt1.value && oIpt2.value){
+                  oShow.innerHTML = Math.max(oIpt1.value, oIpt2.value);
+//                if(oIpt1.value.search(/$[0]$/) && parseInt(oIpt2.value)){
+//                    if(oIpt1.value >= oIpt2.value){
+//                        oShow.innerHTML = oIpt1.value;
+//                    }else{
+//                        oShow.innerHTML = oIpt2.value;
+//                    }
+//                }else{
+//                    oShow.innerHTML = NaN;
+//                }
+            }else{
+                alert('请输入数字');
+            }
+        };
+        oIpt1.onkeyup = function(){
+            if(oIpt1.value.charAt(oIpt1.value.length - 1).search(/[0-9]/)){
+                oIpt1.value = oIpt1.value.slice(0,-1);
+            }
+        };
+        oIpt2.onkeyup = function(){
+            if(oIpt2.value.charAt(oIpt2.value.length - 1).search(/[0-9]/)){
+                oIpt2.value = oIpt2.value.slice(0,-1);
+            }
+        }
+    </script>
+</body>
+</html>
