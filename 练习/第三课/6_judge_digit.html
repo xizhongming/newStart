@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="ipt" value="">
+<input type="button" value="是否是两位数" id="btn">
+<script>
+    window.onload = function() {
+        let oIpt = document.getElementById('ipt');
+        let oBtn = document.getElementById('btn');
+        oIpt.onkeyup = function(){
+               if(oIpt.value.charAt(oIpt.value.length - 1).search(/[0-9]/)){
+                   oIpt.value = oIpt.value.slice(0,-1);
+                 }
+             };
+            oBtn.onclick = function(){
+                if(oIpt.value){
+                    let len = oIpt.value.length;
+//                    let yes = /&#8730;
+                    alert(oIpt.value.length == 2 ? (`这是2位数`):"这是"+oIpt.value.length + "位数");
+                }else{
+                    alert('请输入数字');
+                }
+
+        }
+    }
+
+</script>
+</body>
+</html>

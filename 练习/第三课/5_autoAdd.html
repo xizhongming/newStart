@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #num{
+            /*margin:0 auto;*/
+            /*width:400px;*/
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="num">1</h2>
+    <script>
+        window.onload = function(){
+            let oNum = document.getElementById('num');
+            setInterval(function(){
+                 oNum.innerHTML = parseInt(oNum.innerHTML) + 1;
+            },1000);
+        }
+    </script>
+</body>
+</html>
