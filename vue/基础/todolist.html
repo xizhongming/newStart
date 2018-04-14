@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .auto{
+            border:1px;
+            table-layout:auto;
+            width:400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table id="t1" class="auto">
+            <thead>
+                <tr>
+                    <td>产品名称</td>
+                    <td>产品价格</td>
+                    <td>选择</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody v-for="(product,index) in productList">
+                <tr>
+                    <td v-text="product.name"></td>
+                    <td v-text="product.price"></td>
+                    <td>
+                        <input type="checkbox"  @click="choose(product)">
+                    </td>
+                    <td> <button @click="del(index)">del</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>{{getSum}}</h1>
+        <button @click="delSelected">删除选中</button>
+        产品名称<input type="text" v-model="productName">
+        产品价格<input type="text" v-model="productPrice">
+        <button @click="add">添加项目</button>
+        <!--<h2 v-show = "isShow" id="tip"></h2>-->
+        <input type="text" v-model="matchContent">
+        <button @click="match">匹配</button>
+
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                productList:[{
+                    name:'衣服',
+                    price:122,
+                    isSelected:false,
+                },{
+                    name:'裤子',
+                    price:100,
+                    isSelected:false,
+                },{
+                    name:'鞋子',
+                    price:300,
+                    isSelected:false,
+                },{
+                    name:'帽子',
+                    price:22,
+                    isSelected:false,
+                },{
+                    name:'手套',
+                    price:12,
+                    isSelected:false,
+                }],
+                sum:0,
+                productName:'',
+                productPrice:0,
+                isShow:false,
+                matchContent:''
+
+            },
+            methods:{
+                choose(product){
+                    product.isSelected = !product.isSelected;
+                },
+                del(index){
+                    this.productList.splice(index,1);
+                },
+//                delSelected(){
+//                    this.productList.forEach((value,index)=>{
+//                        if(value.isSelected == true){
+//                            this.productList.splice(index,1);
+//                        }
+//                    })
+//                },
+                delSelected(){
+                  this.productList = this.productList.filter((item,index)=>{
+                    if(item.isSelected == false){
+                        return item;
+                    }
+
+                  })
+                },
+                add(){
+                    let item = {
+                        name:this.productName,
+                        price:this.productPrice,
+                        isSelected:false,
+                    };
+//                    if(item.name == ''){
+//                        this.isShow = true;
+//                        document.getElementById("#tip").innerHTML ="请填写完整";
+//                        return;
+//                    }else{
+//                        this.isShow = false;
+//                    }
+                    this.productList.push(item);
+                    this.productName = this.productPrice = '';
+                },
+                match(){
+//                    this.productList.forEach((value,index)=>{
+//                        if(value.name.include(this.matchContent||value.price.include(this.matchContent))){
+//                            this.productList[index].style.display = 'block';
+//                        }else{
+//                            this.productList[index].style.display = 'none'
+//
+//                        }
+//                    })
+                    this.productList = this.productList.filter((item)=>{
+                        if(item.name.includes(this.matchContent)||item.price.toString().includes(this.matchContent)){
+                            return item;
+                        }
+                    })
+                }
+            },
+            computed:{
+                getSum() {
+                    let temp = 0;
+                    this.productList.forEach((value)=>{
+                        if(value.isSelected == true){
+                            temp += value.price;
+                        }
+                    });
+                    return temp;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
